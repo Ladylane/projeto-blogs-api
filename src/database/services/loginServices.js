@@ -11,7 +11,7 @@ const schema = Joi.object({
 
 const validarLogin = async (email, password) => {
  try {
- const eOne = { status: 400, message: 'Some required fields are missing' };
+  const eOne = { status: 400, message: 'Some required fields are missing' };
   const eTwo = { status: 400, message: 'Invalid fields' };
 
   const { error } = schema.validate({ email, password });
