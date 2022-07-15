@@ -17,6 +17,17 @@ const getAll = async () => {
   return usuarios;
 };
 
+const getById = async (id) => {
+  const usuario = await User.findByPk(
+    id, 
+    { 
+      attributes: { exclude: ['password'] },
+    },
+    );
+  if (!usuario) return { status: 404, message: 'User does not exist' };
+  return usuario;
+};
+
 // const eT = { status: 400, message: '"email" must be a valid email' };
 // const eThree = { status: 400, message: '"password" length must be at least 6 characters long' };
 // const eOne = { status: 400, message: 'Some required fields are missing' };
@@ -49,5 +60,6 @@ const addUser = async (displayName, email, password, image) => {
 
 module.exports = { 
   getAll,
+  getById,
   addUser,
 };
