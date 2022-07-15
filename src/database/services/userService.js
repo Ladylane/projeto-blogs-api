@@ -11,7 +11,9 @@ const schema = Joi.object({
 });
 
 const getAll = async () => {
-  const usuarios = await User.findAll();
+  const usuarios = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
   return usuarios;
 };
 
