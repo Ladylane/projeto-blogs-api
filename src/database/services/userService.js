@@ -34,16 +34,11 @@ const getById = async (id) => {
 const eTwo = { status: 409, message: 'User already registered' };
 const addUser = async (displayName, email, password, image) => {
   try {
-    // console.log('xxxxxxxxxxxxxxxxxxxxxxxxxx', displayName, email, password, image);
-    // const ver = schema.validate({ displayName, email, password, image });
-    // console.log('VER RETORNO DO JOY : ', ver);
     const { error } = schema.validate({ displayName, email, password, image });
-    // console.log('!!!!!ERROR SERVICE JOI: ', error);
     if (error) {
       const e = { status: 400, message: error.details[0].message };
       return e;
     }
-
     const user = await User.findOne({ where: { email } });
     if (user) return eTwo;
 
@@ -54,8 +49,6 @@ const addUser = async (displayName, email, password, image) => {
   } catch (e) {
     console.log(e.message);
   }
-  // const salt = bcrypt.genSaltSync(5);
-  // const passwordHash = bcrypt.hashSync(password, salt);
 };
 
 module.exports = { 
