@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.use(mtoken.authenticateToken);
 router.post('/', catController.addCat);
+router.get('/', catController.getAll);
 
 module.exports = router;
