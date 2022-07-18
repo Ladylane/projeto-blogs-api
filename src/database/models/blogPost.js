@@ -1,7 +1,13 @@
 'use strict';
+//linhas 13 e 14 adicionadas devido requisito 12
 module.exports = (sequelize, DataTypes) => {
   const BlogPost = sequelize.define('BlogPost', {
-    id: { type: DataTypes.INTEGER, primaryKey: true },
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
@@ -9,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     updated: DataTypes.DATE,
   }, {
     tableName: 'BlogPosts',
+    createdAt: 'published',
+    updatedAt: 'updated',
   });
 
   BlogPost.associate = (models) => {
