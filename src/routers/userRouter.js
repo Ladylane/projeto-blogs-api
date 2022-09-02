@@ -4,9 +4,8 @@ const mtoken = require('../database/middleware/authToken');
 
 const router = express.Router();
 
-router.post('/', userController.addUser);
-router.use(mtoken.authenticateToken);
-router.get('/', userController.getAll);
-router.get('/:id', userController.getById);
+router.post('/user', userController.addUser);
+router.get('/user', mtoken.authenticateToken, userController.getAll);
+router.get('/user/:id', mtoken.authenticateToken, userController.getById);
 
 module.exports = router;

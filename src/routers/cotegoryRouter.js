@@ -4,8 +4,7 @@ const mtoken = require('../database/middleware/authToken');
 
 const router = express.Router();
 
-router.use(mtoken.authenticateToken);
-router.post('/', catController.addCat);
-router.get('/', catController.getAll);
+router.post('/categories', mtoken.authenticateToken, catController.addCat);
+router.get('/categories', mtoken.authenticateToken, catController.getAll);
 
 module.exports = router;
